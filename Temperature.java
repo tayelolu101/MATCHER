@@ -17,25 +17,16 @@ public class Temperature {
     static String y [] = {"Morning","Afternoon","Evening"};
     static int i = 0;
     static int j = 0;
+    static int one = 1;
     static  double max = 0;
     static  void testTemp(){
-           temp[0][0] = 10;
-           temp[0][1] = 30;
-           temp[0][2] = 50;
-           temp[1][0] = 10;
-           temp[1][1] = 70;
-           temp[1][2] = 15; 
-           temp[2][0] = 12;
-           temp[2][1] = 66;
-           temp[2][2] = 45;
-           temp[3][0] = 38;
-           temp[3][1] = 30;
-           temp[3][2] = 37;
-           temp[4][0] = 50;
-           temp[4][1] = 53; 
-           temp[4][2] = 42;      
-        for(int r = 0; r < temp.length; r++){
-            for(int c = 0; c < temp[r].length; c++){
+         Scanner in = new Scanner(System.in);
+         System.out.println("Enter readings "+one+" : ");
+         try{
+            for(int r = 0; r < temp.length; r++){
+              for(int c = 0; c < temp[r].length; c++){
+                temp[r][c] = in.nextInt();
+                  one++
                 if(temp[r][c] > max){
                     max = temp[r][c]; 
                    i = x.length - 1;
@@ -46,8 +37,14 @@ public class Temperature {
             }
         }
         System.out.println("The maximum temperature is " +max+" , and it ocurred at "+x[i]+" in the "+y[j]);
+         }catch(InputMismatchException ex){
+             System.err.println("Please enter Numbers only..");
+             testTemp();
+             return;  
+         }
     }
     public static void main(String[] args) {
        testTemp();
     }
 }
+
